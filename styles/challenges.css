@@ -1,0 +1,283 @@
+/* Wrapper */
+.challenge-wrapper {
+  padding: 80px 20px;
+  background: linear-gradient(135deg, #f3e8ff, #e9d5ff);
+  min-height: 100vh;
+  text-align: center;
+}
+
+/* Title */
+.challenge-title {
+  font-size: 2.8rem;
+  color: #6b21a8;
+  font-weight: bold;
+  margin-bottom: 40px;
+}
+
+/* Challenge Cards */
+.challenge-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.challenge-card {
+  background: white;
+  border-radius: 18px;
+  box-shadow: 0 6px 20px rgba(126, 34, 206, 0.08);
+  padding: 24px;
+  max-width: 280px;
+  width: 100%;
+  transition: transform 0.3s ease;
+  text-align: center; /* ✅ Center aligned */
+}
+
+.challenge-card:hover {
+  transform: translateY(-5px);
+}
+
+.challenge-card h2 {
+  font-size: 1.4rem;
+  color: #7e22ce;
+  margin-bottom: 10px;
+}
+
+.challenge-card p {
+  font-size: 0.95rem;
+  color: #444;
+  margin-bottom: 10px;
+}
+
+.challenge-card ul {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 16px;
+  text-align: center; /* ✅ Center align list */
+}
+
+.challenge-card li {
+  font-size: 0.9rem;
+  margin-bottom: 6px;
+}
+
+.challenge-card button {
+  background-color: #7e22ce;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.challenge-card button:hover {
+  background-color: #6b21a8;
+}
+
+/* Progress Map */
+.progress-map {
+  margin-top: 60px;
+}
+
+.map-title {
+  font-size: 1.5rem;
+  color: #6b21a8;
+  margin-bottom: 20px;
+}
+
+.map-track {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.map-node {
+  font-size: 1.6rem;
+  margin: 0 6px;
+}
+
+.map-node.active {
+  animation: pulse 1s infinite;
+}
+
+.map-line {
+  width: 20px;
+  height: 2px;
+  background-color: #7e22ce;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.3);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* 🔥 Streak + Rewards Section */
+.streak-rewards {
+  margin-top: 60px;
+  padding: 30px;
+  background: #f5edff;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(126, 34, 206, 0.1);
+}
+
+.streak-rewards h3 {
+  font-size: 1.8rem;
+  color: #7e22ce;
+  margin-bottom: 30px;
+  font-weight: bold;
+}
+
+/* Equal Height Flex Layout */
+.streak-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+  align-items: stretch;
+}
+
+/* Equal Card Style */
+.energy-ring,
+.reward-center,
+.aura-meter {
+  flex: 1 1 250px;
+    background: linear-gradient(135deg, #e4d4f6, #e9d5ff);
+
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 6px 12px rgba(126, 34, 206, 0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 320px;
+  text-align: center;
+}
+
+/* Energy Ring Chart */
+.circular-chart {
+  width: 100px;
+  height: 100px;
+  display: block;
+  margin: auto;
+}
+
+.circle-bg {
+  fill: none;
+  stroke: #eee;
+  stroke-width: 3.8;
+}
+
+.circle {
+  fill: none;
+  stroke: #7e22ce;
+  stroke-width: 3.8;
+  stroke-linecap: round;
+  transition: stroke-dasharray 0.6s ease;
+}
+
+.percentage {
+  font-size: 0.6rem;
+  fill: #6b21a8;
+  text-anchor: middle;
+  dominant-baseline: middle;
+}
+
+/* Pet Image + Text */
+.pet-img {
+  width: 80px;
+  margin-bottom: 10px;
+}
+
+.pet-text {
+  color: #6b21a8;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.mystery-btn {
+  background-color: #7e22ce;
+  color: #fff;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.mystery-btn:hover {
+  background-color: #6b21a8;
+}
+
+/* Aura Meter */
+.aura-bar {
+  width: 100px;
+  height: 8px;
+  background: #ddd;
+  border-radius: 5px;
+  overflow: hidden;
+  margin: 10px auto;
+}
+
+.aura-fill {
+  height: 100%;
+  background: #7e22ce;
+  transition: width 0.3s ease;
+}
+
+/* XP Summary */
+.xp-summary {
+  margin-top: 20px;
+  color: #333;
+  font-size: 0.95rem;
+}
+
+/* 🌐 Responsive */
+@media (max-width: 768px) {
+  .challenge-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .challenge-card {
+    width: 90%;
+  }
+
+  .streak-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .energy-ring,
+  .reward-center,
+  .aura-meter {
+    width: 100%;
+    min-height: 280px;
+  }
+
+  .circular-chart {
+    width: 80px;
+    height: 80px;
+  }
+
+  .aura-bar {
+    width: 80px;
+  }
+
+  .pet-img {
+    width: 70px;
+  }
+}

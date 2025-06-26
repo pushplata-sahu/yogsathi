@@ -1,0 +1,85 @@
+.plan-page {
+  background: linear-gradient(135deg, #f3e8ff, #e5d4f6);
+  padding: 40px 20px;
+  color: #4b0082;
+  min-height: 100vh;
+}
+
+.plan-title {
+  font-size: 2.4rem;
+  font-weight: bold;
+  color: #6b21a8;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.plan-quote {
+  font-style: italic;
+  text-align: center;
+  margin-bottom: 30px;
+  color: #5e35b1;
+}
+
+.yoga-section, .diet-section {
+  margin-top: 40px;
+}
+
+.yoga-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.yoga-card {
+  background: white;
+  padding: 20px;
+  border-radius: 16px;
+  width: 240px;
+  text-align: center;
+  box-shadow: 0 4px 16px rgba(126, 34, 206, 0.08);
+  transition: transform 0.3s;
+}
+.yoga-card:hover {
+  transform: translateY(-4px);
+}
+.yoga-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 1rem;
+  background-color: #f3e8ff; /* light purple background for harmony */
+  padding: 5px;
+}
+
+.diet-table {
+  background: #fff;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 20px rgba(126, 34, 206, 0.1);
+  max-width: 600px;
+  margin: 0 auto;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #333;
+}
+
+.section-heading-wrapper {
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+
+.section-heading {
+  font-size: 2rem;
+  color: #7e22ce;
+  font-weight: bold;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .yoga-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+}

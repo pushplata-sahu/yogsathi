@@ -1,0 +1,596 @@
+.home-page {
+  font-family: "Segoe UI", sans-serif;
+  color: #3c056d;
+  padding-bottom: 60px;
+  margin: 0;
+  background: linear-gradient(135deg, #f3e8ff, #d1c4e9);
+}
+
+/* --- Hero Section --- */
+.hero {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  background: linear-gradient(to right, #f3e8ff 40%, transparent 100%);
+}
+
+.hero-content {
+  flex: 1;
+  max-width: 600px;
+  padding: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  color: #7e22ce;
+  margin-bottom: 10px;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.cta-btn {
+  background-color: #7e22ce;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 30px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.cta-btn:hover {
+  background-color: #5b159d;
+}
+
+.hero-image {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
+  overflow: hidden;
+}
+
+.hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  margin: 0;
+  padding: 0;
+  border: none;
+  display: block;
+}
+
+.hero-image::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100px;
+  background: linear-gradient(to left, transparent, #f3e8ff);
+}
+
+/* --- contact Section --- */
+.three-column-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr; /* 🟣 3 equal columns */
+  gap: 30px;
+  padding: 60px 30px;
+  align-items: start;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 20px;
+}
+
+.yoga-benefits ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.yoga-benefits li {
+  font-size: 1rem;
+  color: #4a148c;
+  margin-bottom: 12px;
+}
+
+.contact-form {
+  width: 100%;
+  padding: 20px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(126, 34, 206, 0.08);
+}
+.contact-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  font-size: 1rem;
+  background: white;
+}
+
+.contact-form button {
+  background: #7e22ce;
+  color: white;
+  padding: 12px 18px;
+  border: none;
+  border-radius: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.contact-form button:hover {
+  background-color: #6b21a8;
+}
+
+.section-title,
+.form-heading {
+  color: #6b21a8;
+  font-size: 1.8rem;
+  margin-bottom: 16px;
+  font-weight: bold;
+}
+
+.form-info {
+  font-size: 1rem;
+  color: #444;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+/* Ensure map takes same column size */
+.contact-map iframe {
+  width: 100%;
+  height: 100%;
+  min-height: 350px;
+  border-radius: 12px;
+  border: none;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+
+
+/* --- Section Styling --- */
+.section {
+  padding: 60px 20px 30px;
+}
+
+.section h2 {
+  font-size: 2.2rem;
+  color: #6b21a8;
+  text-align: center;
+  margin-bottom: 20px;
+  position: relative;
+  font-weight: 700;
+  text-shadow: 1px 1px 2px rgba(126, 34, 206, 0.2);
+}
+
+.section h2::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  background-color: #7e22ce;
+  margin: 8px auto 0;
+  border-radius: 4px;
+}
+
+
+/* --- Cards --- */
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+}
+
+.yoga-card,
+.meal-card {
+  background: white;
+  padding: 20px;
+  border-radius: 16px;
+  width: 240px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  text-align: center;
+}
+
+.yoga-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 10px;
+}
+
+.yoga-card button,
+.meal-card button {
+  background-color: #7e22ce;
+  color: white;
+  padding: 8px 16px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.yoga-card button:hover,
+.meal-card button:hover {
+  background-color: #5b159d;
+}
+
+.meal-card .tag {
+  background: #ede9fe;
+  color: #7e22ce;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  margin: 4px;
+  display: inline-block;
+}
+
+/* --- Diet Cards Grid (Desktop) --- */
+.diet-wrapper {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+  padding: 20px 10px;
+  margin: 0; /* ✅ no negative margin */
+}
+
+/* ✅ HIDE SCROLLBAR FOR ALL BROWSERS */
+.diet-wrapper::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+.diet-wrapper {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+
+.meal-card {
+  flex: 0 0 220px; /* ✅ fixed width per card */
+  scroll-snap-align: start;
+  margin: 0 10px;
+}
+
+
+/* divide section*/
+
+.exclusive-benefits-section {
+  padding: 60px 36px;
+  text-align: center;
+}
+
+.section-subtitle {
+  color: #141313;
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 6px;
+}
+
+.section-title {
+  font-size: 2.4rem;
+   color: #7e22ce;
+  font-weight: 800;
+  margin-bottom: 50px;
+}
+
+.benefits-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: space-between;
+}
+
+.benefits-column {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.benefit-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  text-align: left;
+  flex-wrap: nowrap;
+}
+
+.benefit-icon {
+  font-size: 1.4rem;
+  color: #7e22ce;
+  padding: 10px;
+  border-radius: 12px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+}
+.benefit-item h4 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #7e22ce;
+  margin-bottom: 6px;
+}
+
+.benefit-item p {
+  font-size: 0.95rem;
+  color: #444;
+  line-height: 1.5;
+}
+
+
+
+/* === Yoga Scrollable Section === */
+.yoga-wrapper {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+  padding: 20px 10px;
+  margin: 0;
+}
+.yoga-wrapper::-webkit-scrollbar {
+  display: none;
+}
+.yoga-wrapper {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.yoga-card {
+  flex: 0 0 220px;
+  scroll-snap-align: start;
+  margin: 0 10px;
+}
+
+/* --- Tracker Section --- */
+.tracker-section {
+  margin-top: 40px;
+  padding: 20px;
+}
+
+.tracker-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.progress-card {
+  background: white;
+  padding: 20px;
+  border-radius: 16px;
+  width: 220px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  text-align: center;
+}
+
+.progress-bar {
+  background: #ede9fe;
+  height: 10px;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 10px 0;
+}
+
+.progress-fill {
+  background: #7e22ce;
+  height: 100%;
+}
+
+.emoji-row {
+  font-size: 1.5rem;
+  margin: 10px 0;
+}
+
+/* Feedback Section */
+.feedback-section {
+  padding: 60px 20px 30px;
+}
+
+/* Feedback cards scroll */
+.feedback-cards-container {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  padding: 0 20px 20px;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  justify-content: center;
+}
+
+/* Hide scrollbar 
+.feedback-cards-container::-webkit-scrollbar {
+  display: none;
+}
+.feedback-cards-container {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}*/
+
+/* Card styling */
+.feedback-card {
+  flex: 0 0 auto;
+  width: 280px;
+  background: #ffffff;
+  border: 1px solid #e6d3f5;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(126, 34, 206, 0.08);
+  padding: 20px;
+  scroll-snap-align: start;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+.feedback-card:hover {
+  transform: translateY(-5px);
+}
+
+.feedback-img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 12px;
+  margin-bottom: 16px;
+  background-color: #f9f5ff;
+}
+
+.feedback-card p {
+  font-size: 1rem;
+  color: #444;
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+.feedback-card span {
+  font-size: 0.9rem;
+  color: #7e22ce;
+  font-weight: 600;
+}
+
+
+/* --- Responsive --- */
+@media screen and (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .hero-content {
+    padding: 40px 20px;
+    text-align: center;
+  }
+
+  .hero-image {
+    width: 100%;
+    height: 300px;
+  }
+
+  .hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .progress-card,
+  .yoga-card,
+  .meal-card {
+    width: 90%;
+  }
+
+  .diet-wrapper {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    padding: 10px 10px;
+    margin-left: 0;
+  }
+
+  .meal-card {
+    flex: 0 0 75%;
+    scroll-snap-align: start;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  .yoga-wrapper {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    padding: 10px 10px;
+    margin-left: 0;
+  }
+
+  .yoga-card {
+    flex: 0 0 75%;
+    scroll-snap-align: start;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  .feedback-cards-container {
+    padding: 0 10px 20px;
+    justify-content: flex-start;
+  }
+
+  
+  .feedback-card {
+    width: 240px;
+  }
+
+ 
+  .feedback-img {
+    height: 140px;
+  }
+
+  .feedback-card p {
+    font-size: 1rem;
+  }
+
+  .feedback-card span {
+    font-size: 0.95rem;
+  }
+
+    .benefits-row {
+    flex-direction: column;
+  }
+    .benefit-item {
+    align-items: center;
+    gap: 10px;
+  }
+
+  .benefit-icon {
+    min-width: 38px;
+    min-height: 38px;
+    font-size: 1.2rem;
+    padding: 8px;
+  }
+
+  .three-column-section {
+  grid-template-columns: 1fr;
+  padding: 30px 20px;
+}
+
+.column {
+  width: 100%;
+}
+
+}
