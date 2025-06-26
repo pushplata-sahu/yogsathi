@@ -20,11 +20,9 @@ export default function Navbar() {
         <Link href="/challenges" className={`navbar-link ${pathname === "/challenges" ? "active-link" : ""}`}>
           Challenges
         </Link>
-        <Link href="/report" className={`navbar-link ${pathname === "/report" ? "active-link" : ""}`}>
-          Report
-        </Link>
+       
         <Link href="/settings" className={`navbar-link ${pathname === "/settings" ? "active-link" : ""}`}>
-          Settings
+          Settings/Report
         </Link>
       </div>
     </nav>

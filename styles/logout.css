@@ -1,0 +1,38 @@
+.logout-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #f3e8ff;
+  text-align: center;
+  font-family: "Segoe UI", sans-serif;
+  padding: 2rem;
+}
+
+.logout-page h1 {
+  color: #7e22ce;
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.logout-page p {
+  color: #6b7280;
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+}
+
+.login-again-btn {
+  background-color: #7e22ce;
+  color: #fff;
+  border: none;
+  padding: 12px 24px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.login-again-btn:hover {
+  background-color: #6b21a8;
+}
