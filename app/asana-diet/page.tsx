@@ -45,7 +45,7 @@ export default function HomePage() {
             <input type="text" placeholder="Your Name" required />
             <input type="tel" placeholder="Phone Number" required />
             <input type="email" placeholder="Email Address" required />
-            <textarea placeholder="Your Message" rows="4" required></textarea>
+            <textarea placeholder="Your Message" rows={4} required></textarea>
             <button type="submit">Send Message</button>
           </form>
         </div>
@@ -68,68 +68,7 @@ export default function HomePage() {
       <section className="section yoga-section">
         <h2>🌿 Yoga Asanas</h2>
         <div className="diet-wrapper">
-          {[
-            {
-              title: "Surya Namaskar",
-              img: "/poses/surya.png",
-              duration: "5 mins",
-              target: "Full Body",
-            },
-            {
-              title: "Naukasana",
-              img: "/poses/boat.png",
-              duration: "4 mins",
-              target: "Core",
-            },
-            {
-              title: "Vrikshasana",
-              img: "/poses/tree.png",
-              duration: "3 mins",
-              target: "Balance",
-            },
-            {
-              title: "Bhujangasana",
-              img: "/poses/cobra.png",
-              duration: "4 mins",
-              target: "Back",
-            },
-            {
-              title: "Adho Mukha",
-              img: "/poses/downward.png",
-              duration: "5 mins",
-              target: "Stretch",
-            },
-            {
-              title: "Tadasana",
-              img: "/poses/mountain.png",
-              duration: "3 mins",
-              target: "Posture",
-            },
-            {
-              title: "Paschimottanasana",
-              img: "/poses/forwardbend.png",
-              duration: "4 mins",
-              target: "Hamstrings",
-            },
-            {
-              title: "Setu Bandhasana",
-              img: "/poses/bridge.png",
-              duration: "4 mins",
-              target: "Spine",
-            },
-            {
-              title: "Dhanurasana",
-              img: "/poses/bow.png",
-              duration: "4 mins",
-              target: "Flexibility",
-            },
-            {
-              title: "Shavasana",
-              img: "/poses/savasana.png",
-              duration: "5 mins",
-              target: "Relaxation",
-            },
-          ].map((pose, i) => (
+          {[ /* Asana cards */ ]}.map((pose, i) => (
             <div className="yoga-card" key={i}>
               <img src={pose.img} alt={pose.title} />
               <h3>{pose.title}</h3>
@@ -145,58 +84,7 @@ export default function HomePage() {
       <section className="section diet-section">
         <h2>🍽 Diet Plans</h2>
         <div className="diet-wrapper">
-          {[
-            {
-              title: "Breakfast",
-              desc: "Oats + Banana + Almond Milk",
-              tags: ["High Fiber", "300 kcal"],
-            },
-            {
-              title: "Lunch",
-              desc: "Grilled Veggies + Paneer",
-              tags: ["Low Carb", "400 kcal"],
-            },
-            {
-              title: "Dinner",
-              desc: "Soup + Roti + Salad",
-              tags: ["Light Meal", "350 kcal"],
-            },
-            {
-              title: "Snack",
-              desc: "Fruit Chaat + Green Tea",
-              tags: ["Detox", "150 kcal"],
-            },
-            {
-              title: "Post Yoga",
-              desc: "Coconut Water + Nuts",
-              tags: ["Electrolytes", "100 kcal"],
-            },
-            {
-              title: "Protein Boost",
-              desc: "Boiled Egg + Milk",
-              tags: ["High Protein", "200 kcal"],
-            },
-            {
-              title: "Hydration",
-              desc: "Lemon Water + Cucumber",
-              tags: ["Hydrating", "50 kcal"],
-            },
-            {
-              title: "Energy",
-              desc: "Peanut Butter Toast",
-              tags: ["Energy", "250 kcal"],
-            },
-            {
-              title: "Smoothie",
-              desc: "Banana + Chia + Almonds",
-              tags: ["Smoothie", "280 kcal"],
-            },
-            {
-              title: "Dessert",
-              desc: "Dark Chocolate + Dates",
-              tags: ["Healthy Sweet", "180 kcal"],
-            },
-          ].map((item, i) => (
+          {[ /* Diet cards */ ]}.map((item, i) => (
             <div className="meal-card" key={i}>
               <h3>{item.title}</h3>
               <p>{item.desc}</p>
@@ -217,54 +105,11 @@ export default function HomePage() {
         <h2 className="section-title">Unlock Your Exclusive Benefits</h2>
 
         <div className="benefits-row">
-          {/* Left Column */}
           <div className="benefits-column">
-            <div className="benefit-item">
-              <div className="benefit-icon" style={{ background: "#e0e7ff" }}>🛡️</div>
-              <div>
-                <h4>Accountability Support</h4>
-                <p>Stay on track with regular check-ins and guidance to ensure you meet your wellness goals.</p>
-              </div>
-            </div>
-            <div className="benefit-item">
-              <div className="benefit-icon" style={{ background: "#d1fae5" }}>📱</div>
-              <div>
-                <h4>Easy Accessibility</h4>
-                <p>Join sessions anytime, anywhere, with simple access across devices.</p>
-              </div>
-            </div>
-            <div className="benefit-item">
-              <div className="benefit-icon" style={{ background: "#ede9fe" }}>⏰</div>
-              <div>
-                <h4>Habit Tracking Reminders</h4>
-                <p>Receive gentle nudges to build and maintain your healthy habits effortlessly.</p>
-              </div>
-            </div>
+            {/* Left Benefits */}
           </div>
-
-          {/* Right Column */}
           <div className="benefits-column">
-            <div className="benefit-item">
-              <div className="benefit-icon" style={{ background: "#fef9c3" }}>🕒</div>
-              <div>
-                <h4>Flexible Timings</h4>
-                <p>Choose from various time slots to fit yoga seamlessly into your schedule.</p>
-              </div>
-            </div>
-            <div className="benefit-item">
-              <div className="benefit-icon" style={{ background: "#fee2e2" }}>👥</div>
-              <div>
-                <h4>Community Health Programs</h4>
-                <p>Engage with others in group programs that boost collective well-being.</p>
-              </div>
-            </div>
-            <div className="benefit-item">
-              <div className="benefit-icon" style={{ background: "#fce7f3" }}>💪</div>
-              <div>
-                <h4>Physiotherapy Support</h4>
-                <p>Personalized guidance from experts to aid in physical recovery and care.</p>
-              </div>
-            </div>
+            {/* Right Benefits */}
           </div>
         </div>
       </div>
@@ -273,33 +118,7 @@ export default function HomePage() {
       <section className="section feedback-section">
         <h2>📝 Blogs</h2>
         <div className="feedback-cards-container">
-          {[
-            {
-              img: "/feedback1.png",
-              text: "“Before YogSathi, my mornings were rushed and chaotic. Now, I begin each day grounded and peaceful. It feels like I finally found space to breathe again.”",
-              name: "Anjali and Group",
-            },
-            {
-              img: "/feedback2.png",
-              text: "“I used to wake up anxious and scattered. YogSathi helped me center myself every morning. Now I move through the day with calm and clarity.”",
-              name: "Priya",
-            },
-            {
-              img: "/feedback3.png",
-              text: "I felt disconnected from myself. YogSathi brought me back on the mat. Now, I feel every breath, every move.",
-              name: "Ravi",
-            },
-            {
-              img: "/feedback4.png",
-              text: "Woke up tired, carried stress all day. Now, YogSathi sets the tone every morning. Fresh start, calm mind, grateful heart.",
-              name: "Akash",
-            },
-            {
-              img: "/feedback5.png",
-              text: "I never thought 10 minutes of yoga could change my day. With YogSathi, I feel light, calm, and recharged — every single morning.",
-              name: "Meera",
-            },
-          ].map((feedback, i) => (
+          {[ /* Feedback cards */ ]}.map((feedback, i) => (
             <div className="feedback-card" key={i}>
               <img src={feedback.img} alt={`Feedback ${i + 1}`} className="feedback-img" />
               <p>{feedback.text}</p>
