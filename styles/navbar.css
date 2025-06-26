@@ -1,0 +1,74 @@
+/* ---------- Desktop Styles ---------- */
+.navbar {
+  background-color: #ffffff;
+  padding: 16px 32px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  flex-wrap: wrap;
+}
+
+.navbar-logo {
+  font-size: 28px;
+  font-weight: bold;
+  color: #7e22ce;
+  font-family: Arial, sans-serif;
+  margin: 0;
+}
+
+/* nav links container */
+.navbar-links {
+  display: flex;
+  gap: 28px;
+  overflow-x: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE 10+ */
+}
+
+.navbar-links::-webkit-scrollbar {
+  display: none; /* Chrome */
+}
+
+.navbar-link {
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  color: #000000;
+  position: relative;
+  transition: all 0.3s ease;
+  font-family: Arial, sans-serif;
+  padding: 4px 0;
+  white-space: nowrap;
+}
+
+.navbar-link:hover {
+  color: #7e22ce;
+}
+
+.navbar-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  height: 2px;
+  width: 0;
+  background-color: #7e22ce;
+  transition: width 0.3s ease;
+}
+
+.navbar-link:hover::after {
+  width: 100%;
+}
+
+.active-link {
+  color: #7e22ce;
+  font-weight: 700;
+}
+
+.active-link::after {
+  width: 100%;
+}
