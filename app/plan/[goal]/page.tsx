@@ -2,7 +2,7 @@
 
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import "../../../styles/weightloss.css"; // make sure the path is correct
+import "../../../styles/weightloss.css";
 
 // ✅ Full goalData object
 const goalData = {
@@ -62,30 +62,33 @@ const goalData = {
       dinner: "Lentil Soup + Millet Roti"
     }
   },
- "reduce-stress": {
-  title: "Reduce Stress",
-  quote: "Exhale stress, inhale peace.",
-  yoga: [
-    { name: "Child's Pose", image: "/poses/child.png", duration: "4 min", tag: "Calming" },
-    { name: "Cat-Cow Flow", image: "/poses/downward.png", duration: "4 min", tag: "Spine Release" },
-    { name: "Pranayama", image: "/poses/pranayama.png", duration: "6 min", tag: "Mindfulness" }
-  ],
-  diet: {
-    breakfast: "Warm Milk + Dates",
-    lunch: "Moong Dal + Soft Roti",
-    dinner: "Khichdi + Ghee + Curd"
+  "reduce-stress": {
+    title: "Reduce Stress",
+    quote: "Exhale stress, inhale peace.",
+    yoga: [
+      { name: "Child's Pose", image: "/poses/child.png", duration: "4 min", tag: "Calming" },
+      { name: "Cat-Cow Flow", image: "/poses/downward.png", duration: "4 min", tag: "Spine Release" },
+      { name: "Pranayama", image: "/poses/pranayama.png", duration: "6 min", tag: "Mindfulness" }
+    ],
+    diet: {
+      breakfast: "Warm Milk + Dates",
+      lunch: "Moong Dal + Soft Roti",
+      dinner: "Khichdi + Ghee + Curd"
+    }
   }
-}
-};
+} as const;
+
+type GoalKey = keyof typeof goalData;
 
 export default function PlanPage() {
   const params = useParams();
-  const [data, setData] = useState<any>(null);
+  const [data, setData] = useState<(typeof goalData)[GoalKey] | null>(null);
 
   useEffect(() => {
     const goalParam = params?.goal as string;
-    if (goalParam && goalData[goalParam]) {
-      setData(goalData[goalParam]);
+
+    if (goalParam in goalData) {
+      setData(goalData[goalParam as GoalKey]);
     }
   }, [params]);
 
@@ -102,7 +105,7 @@ export default function PlanPage() {
       </div>
       <section className="yoga-section">
         <div className="yoga-cards">
-          {data.yoga.map((pose: any, index: number) => (
+          {data.yoga.map((pose, index) => (
             <div key={index} className="yoga-card">
               <img src={pose.image} alt={pose.name} className="yoga-img" />
               <h3>{pose.name}</h3>
