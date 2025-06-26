@@ -74,13 +74,17 @@ export default function ReportPage() {
         <p>Longest streak: <strong>{summary.streak > 0 ? `${summary.streak} days` : "Not maintained yet"}</strong></p>
       </div>
 
-      {/* 🎯 Challenge */}
+      {/* 🎯 Challenge + 🏆 Rewards */}
       <div className="challenge-reward-card">
         <h2>🎯 Challenge Activity</h2>
-        <p>You have {summary.challengeAttempted ? "✅ attempted" : "❌ not attempted"} this week’s challenge.</p>
+        <p>
+          You have {summary.challengeAttempted ? "✅ attempted" : "❌ not attempted"} this week’s challenge.
+        </p>
 
         <h2>🏆 Rewards Earned</h2>
-        <p>You’ve earned <strong>{summary.rewards || 0}</strong> reward{summary.rewards === 1 ? "" : "s"} till now.</p>
+        <p>
+          You’ve earned <strong>{summary.rewards || 0}</strong> reward{summary.rewards === 1 ? "" : "s"} till now.
+        </p>
       </div>
 
       {/* 📊 Daily Logs */}
@@ -98,6 +102,7 @@ export default function ReportPage() {
           <p>No logs found for this week.</p>
         )}
 
+        {/* 🌟 Tip of the Day */}
         <div className="tip-box">
           <h3>🌟 Tip of the Day</h3>
           <p>“Yoga is the journey of the self, through the self, to the self.”</p>
