@@ -425,7 +425,29 @@
   padding: 0 20px 20px;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
-  justify-content: center;
+  justify-content: flex-start; /* better for scroll */
+  flex-wrap: nowrap;           /* 🔥 this is key */
+}
+
+/* ✅ Show scrollbar on mobile explicitly */
+.feedback-cards-container::-webkit-scrollbar {
+  height: 8px;                /* Adjust height for horizontal */
+  display: block;             /* 🔥 Force show on mobile */
+}
+
+.feedback-cards-container::-webkit-scrollbar-thumb {
+  background-color: #b794f4;  /* Soft purple thumb */
+  border-radius: 8px;
+}
+
+.feedback-cards-container::-webkit-scrollbar-track {
+  background-color: #f3e8ff;
+}
+
+/* ✅ For Firefox */
+.feedback-cards-container {
+  scrollbar-width: thin;          /* Firefox */
+  scrollbar-color: #b794f4 #f3e8ff;
 }
 
 /* Hide scrollbar 
@@ -476,6 +498,7 @@
   color: #7e22ce;
   font-weight: 600;
 }
+
 
 
 /* --- Responsive --- */
