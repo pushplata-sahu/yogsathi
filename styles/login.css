@@ -1,38 +1,67 @@
-.login-container {
-  max-width: 420px;
-  margin: 60px auto;
-  background-color: #ffffff;
-  padding: 35px;
-  border-radius: 20px;
-  box-shadow: 0 8px 25px rgba(126, 34, 206, 0.15);
+/* REMOVE THIS ❌ (don’t use overflow:hidden on body) */
+/*
+body.login-page,
+html.login-page {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+*/
+
+/* ✅ Login Page Background */
+.login-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f3e8ff, #d1c4e9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 20px; /* top/bottom space so navbar & footer don't overlap */
+  font-family: Arial, sans-serif;
 }
 
+/* ✅ Login Box */
+.login-container {
+  max-width: 420px;
+  width: 100%;
+  padding: 35px;
+  border-radius: 22px;
+  background: #bea6e9;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 20px rgba(102, 77, 102, 0.08);
+}
+
+/* Heading */
 .login-container h2 {
   color: #7e22ce;
   text-align: center;
-  margin-bottom: 30px;
-  font-size: 26px;
+  margin-bottom: 25px;
+  font-size: 28px;
   font-weight: bold;
 }
 
+/* Input */
 .login-container input {
   width: 100%;
-  padding: 14px;
-  margin-bottom: 20px;
+  padding: 12px;
+  margin-bottom: 18px;
   border: 1px solid #ccc;
-  border-radius: 12px;
+  border-radius: 10px;
   font-size: 16px;
+  background: #fafafa;
+  color: #4a4a4a;
 }
 
+/* Button */
 .login-container button {
   width: 100%;
-  padding: 14px;
+  padding: 12px;
   background-color: #7e22ce;
-  color: #ffffff;
+  color: #fff;
   font-size: 16px;
   font-weight: bold;
   border: none;
-  border-radius: 12px;
+  border-radius: 10px;
   cursor: pointer;
   transition: background 0.3s ease;
 }
@@ -41,9 +70,26 @@
   background-color: #6b21a8;
 }
 
+/* Bottom Text */
 .login-container p {
   text-align: center;
   margin-top: 15px;
   font-size: 14px;
   color: #6b21a8;
+}
+
+/* 📱 Mobile View */
+@media (max-width: 480px) {
+  .login-container {
+    padding: 25px 20px;
+  }
+
+  .login-container h2 {
+    font-size: 24px;
+  }
+
+  .login-container input,
+  .login-container button {
+    font-size: 15px;
+  }
 }

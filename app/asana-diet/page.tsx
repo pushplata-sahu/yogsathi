@@ -1,7 +1,9 @@
 "use client";
 import "../../styles/asanadiet.css";
+import { useState } from "react";
 
 export default function HomePage() {
+  // 🧘 Yoga Data
   const yogaAsanas = [
     { title: "Surya Namaskar", img: "/poses/surya.png", duration: "5 mins", target: "Full Body" },
     { title: "Naukasana", img: "/poses/boat.png", duration: "4 mins", target: "Core" },
@@ -15,6 +17,7 @@ export default function HomePage() {
     { title: "Shavasana", img: "/poses/savasana.png", duration: "5 mins", target: "Relaxation" },
   ];
 
+  // 🍽️ Diet Data
   const dietPlans = [
     { title: "Breakfast", desc: "Oats + Banana + Almond Milk", tags: ["High Fiber", "300 kcal"] },
     { title: "Lunch", desc: "Grilled Veggies + Paneer", tags: ["Low Carb", "400 kcal"] },
@@ -28,6 +31,7 @@ export default function HomePage() {
     { title: "Dessert", desc: "Dark Chocolate + Dates", tags: ["Healthy Sweet", "180 kcal"] },
   ];
 
+  // 🗣️ Feedbacks
   const feedbacks = [
     { img: "/feedback1.png", text: "“Before YogSathi, my mornings were rushed and chaotic. Now, I begin each day grounded and peaceful.”", name: "Anjali and Group" },
     { img: "/feedback2.png", text: "“I used to wake up anxious. YogSathi helped me center myself every morning.”", name: "Priya" },
@@ -35,6 +39,42 @@ export default function HomePage() {
     { img: "/feedback4.png", text: "Woke up tired, carried stress all day. Now, YogSathi sets the tone every morning.", name: "Akash" },
     { img: "/feedback5.png", text: "I never thought 10 minutes of yoga could change my day. With YogSathi, I feel calm and recharged.", name: "Meera" },
   ];
+
+  // 💬 Contact form state
+  const [contact, setContact] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    message: "",
+  });
+
+  const handleChange = (e: any) => {
+    setContact({ ...contact, [e.target.name]: e.target.value });
+  };
+
+  const handleContactSubmit = async (e: any) => {
+    e.preventDefault();
+
+    try {
+      const res = await fetch("https://yogsathi-backend-production.up.railway.app/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(contact),
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
+        alert("✅ Thank you for contacting us!");
+        setContact({ name: "", phone: "", email: "", message: "" });
+      } else {
+        alert("❌ Submission failed. Please try again.");
+      }
+    } catch (error) {
+      console.error("Contact form error:", error);
+      alert("❌ Server error. Please try again later.");
+    }
+  };
 
   return (
     <div className="home-page">
@@ -50,8 +90,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Contact Section */}
+      {/* Contact + Info + Map */}
       <div className="three-column-section">
+        {/* Left Column */}
         <div className="column yoga-benefits">
           <h2 className="section-title">Yoga & Diet Benefits</h2>
           <ul className="benefits-list">
@@ -67,18 +108,22 @@ export default function HomePage() {
           </ul>
         </div>
 
+        {/* Middle Column - Contact Form */}
         <div className="column contact-form">
           <h2 className="form-heading">Contact</h2>
-          <p className="form-info">We’d love to hear from you. Fill in the form below and our team will reach out.</p>
-          <form>
-            <input type="text" placeholder="Your Name" required />
-            <input type="tel" placeholder="Phone Number" required />
-            <input type="email" placeholder="Email Address" required />
-            <textarea placeholder="Your Message" rows={4} required></textarea>
+          <p className="form-info">
+            We’d love to hear from you. Fill in the form below and our team will reach out.
+          </p>
+          <form onSubmit={handleContactSubmit}>
+            <input type="text" name="name" placeholder="Your Name" value={contact.name} onChange={handleChange} required />
+            <input type="tel" name="phone" placeholder="Phone Number" value={contact.phone} onChange={handleChange} required />
+            <input type="email" name="email" placeholder="Email Address" value={contact.email} onChange={handleChange} required />
+            <textarea name="message" placeholder="Your Message" rows={4} value={contact.message} onChange={handleChange} required></textarea>
             <button type="submit">Send Message</button>
           </form>
         </div>
 
+        {/* Right Column - Map */}
         <div className="column contact-map">
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d119037.51159297545!2d81.25567310902922!3d21.195247875871598!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a293cccec49ed45%3A0x2b3ff3bd73c91877!2sBhilai%2C%20Chhattisgarh!5e0!3m2!1sen!2sin!4v1750927332881!5m2!1sen!2sin"
@@ -92,7 +137,7 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* Yoga Section */}
+      {/* 💪 Yoga Section */}
       <section className="section yoga-section">
         <h2>🌿 Yoga Asanas</h2>
         <div className="diet-wrapper">
@@ -108,7 +153,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Diet Section */}
+      {/* 🍽️ Diet Section */}
       <section className="section diet-section">
         <h2>🍽 Diet Plans</h2>
         <div className="diet-wrapper">
@@ -125,25 +170,61 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Benefits Section */}
+      {/* 🌟 Benefits Section */}
       <div className="exclusive-benefits-section">
         <p className="section-subtitle">Membership Features</p>
         <h2 className="section-title">Unlock Your Exclusive Benefits</h2>
         <div className="benefits-row">
           <div className="benefits-column">
-            <div className="benefit-item"><div className="benefit-icon" style={{ background: "#e0e7ff" }}>🛡️</div><div><h4>Accountability Support</h4><p>Stay on track with regular check-ins and guidance.</p></div></div>
-            <div className="benefit-item"><div className="benefit-icon" style={{ background: "#d1fae5" }}>📱</div><div><h4>Easy Accessibility</h4><p>Join sessions anytime, anywhere, on any device.</p></div></div>
-            <div className="benefit-item"><div className="benefit-icon" style={{ background: "#ede9fe" }}>⏰</div><div><h4>Habit Tracking</h4><p>Gentle nudges to keep your wellness routine alive.</p></div></div>
+            <div className="benefit-item">
+              <div className="benefit-icon" style={{ background: "#e0e7ff" }}>🛡️</div>
+              <div>
+                <h4>Accountability Support</h4>
+                <p>Stay on track with regular check-ins and guidance.</p>
+              </div>
+            </div>
+            <div className="benefit-item">
+              <div className="benefit-icon" style={{ background: "#d1fae5" }}>📱</div>
+              <div>
+                <h4>Easy Accessibility</h4>
+                <p>Join sessions anytime, anywhere, on any device.</p>
+              </div>
+            </div>
+            <div className="benefit-item">
+              <div className="benefit-icon" style={{ background: "#ede9fe" }}>⏰</div>
+              <div>
+                <h4>Habit Tracking</h4>
+                <p>Gentle nudges to keep your wellness routine alive.</p>
+              </div>
+            </div>
           </div>
           <div className="benefits-column">
-            <div className="benefit-item"><div className="benefit-icon" style={{ background: "#fef9c3" }}>🕒</div><div><h4>Flexible Timings</h4><p>Choose a time that suits your schedule perfectly.</p></div></div>
-            <div className="benefit-item"><div className="benefit-icon" style={{ background: "#fee2e2" }}>👥</div><div><h4>Community Programs</h4><p>Be part of uplifting group health journeys.</p></div></div>
-            <div className="benefit-item"><div className="benefit-icon" style={{ background: "#fce7f3" }}>💪</div><div><h4>Physiotherapy Support</h4><p>Expert guidance for recovery and body care.</p></div></div>
+            <div className="benefit-item">
+              <div className="benefit-icon" style={{ background: "#fef9c3" }}>🕒</div>
+              <div>
+                <h4>Flexible Timings</h4>
+                <p>Choose a time that suits your schedule perfectly.</p>
+              </div>
+            </div>
+            <div className="benefit-item">
+              <div className="benefit-icon" style={{ background: "#fee2e2" }}>👥</div>
+              <div>
+                <h4>Community Programs</h4>
+                <p>Be part of uplifting group health journeys.</p>
+              </div>
+            </div>
+            <div className="benefit-item">
+              <div className="benefit-icon" style={{ background: "#fce7f3" }}>💪</div>
+              <div>
+                <h4>Physiotherapy Support</h4>
+                <p>Expert guidance for recovery and body care.</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Feedback Section */}
+      {/* ✨ Feedback Section */}
       <section className="section feedback-section">
         <h2>📝 Blogs</h2>
         <div className="feedback-cards-container">
@@ -157,7 +238,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Tracker Section */}
+      {/* 📊 Tracker Section */}
       <section className="section tracker-section">
         <h2>📈 Daily Tracker</h2>
         <div className="tracker-cards">

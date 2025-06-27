@@ -3,49 +3,74 @@ import { useEffect, useState } from "react";
 import "@/styles/report.css";
 
 export default function ReportPage() {
-  const [userName, setUserName] = useState("User");
-  const [summary, setSummary] = useState<any>({
-    totalMinutes: 0,
-    avg: 0,
-    streak: 0,
-    last7: [],
-    challengeAttempted: false,
-    rewards: 0,
-  });
-  const [prediction, setPrediction] = useState("Not Available");
+  const [userName, setUserName] = useState("Yogi Superstar");
+  const [summary, setSummary] = useState<any>(null);
+  const [prediction, setPrediction] = useState("Loading...");
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const userRes = await fetch("https://yogsathi-backend.up.railway.app/api/user");
-        const userData = await userRes.json();
-        setUserName(userData?.name || "User");
+        const BASE_URL = "https://yogsathi-backend-production.up.railway.app";
+        console.log("⏳ Fetching report...");
 
-        const reportRes = await fetch("https://yogsathi-backend.up.railway.app/api/reports");
+        const reportRes = await fetch(`${BASE_URL}/api/reports`);
         const reportData = await reportRes.json();
+        console.log("✅ Report Response:", reportData);
 
         if (reportData.success && reportData.summary) {
           setSummary(reportData.summary);
 
           const today = reportData.summary.last7?.at(-1);
+          console.log("📅 Today Log:", today);
+
           if (today?.yoga_minutes) {
-            const predictRes = await fetch("https://yogsathi-backend.up.railway.app/api/predictor", {
+            const predictRes = await fetch(`${BASE_URL}/api/predictor`, {
               method: "POST",
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify({ minutes: today.yoga_minutes }),
             });
 
             const predictData = await predictRes.json();
-            if (predictData.success) setPrediction(predictData.prediction);
+            console.log("🔮 Prediction Response:", predictData);
+
+            if (predictData.success) {
+              setPrediction(predictData.prediction);
+            }
+          } else {
+            setPrediction("Not enough data to predict");
           }
+        } else {
+          setSummary(null); // fallback handled below
         }
       } catch (error) {
-        console.warn("API failed. Using fallback.");
+        console.warn("❌ API failed. Using fallback.", error);
+        setSummary(null);
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchData();
   }, []);
+
+  if (loading) {
+    return (
+      <div className="dashboard-layout">
+        <p>Loading your report...</p>
+      </div>
+    );
+  }
+
+  if (!summary) {
+    return (
+      <div className="dashboard-layout">
+        <h2>⚠️ Report Unavailable</h2>
+        <p>We couldn't load your yoga report at the moment.</p>
+        <p>Please check again later or start logging your yoga sessions to get insights.</p>
+      </div>
+    );
+  }
 
   return (
     <div className="dashboard-layout">
@@ -55,14 +80,14 @@ export default function ReportPage() {
           <h2>👤 Welcome</h2>
           <p><strong>Name:</strong> {userName}</p>
           <p><strong>Status:</strong> Active yogi 🧘‍♀️</p>
-          <p><strong>Last 7 Days Logs:</strong> {summary.last7.length}</p>
+          <p><strong>Last 7 Days Logs:</strong> {summary.last7?.length || 0}</p>
         </div>
 
         <div className="summary-card">
           <h2>📅 Weekly Yoga Summary</h2>
-          <p><strong>Total Minutes:</strong> {summary.totalMinutes}</p>
-          <p><strong>Avg Daily Yoga:</strong> {summary.avg?.toFixed(1)} mins</p>
-          <p><strong>ML Prediction:</strong> {prediction}</p>
+          <p><strong>Total Minutes:</strong> {summary.totalMinutes || 0}</p>
+          <p><strong>Avg Daily Yoga:</strong> {summary.avg?.toFixed(1) || 0} mins</p>
+          <p><strong>Predicted Outcome:</strong> {prediction}</p>
           <p><strong>Streak:</strong> {summary.streak > 0 ? `${summary.streak} days` : "❌ Not maintained"}</p>
         </div>
       </div>
@@ -77,20 +102,16 @@ export default function ReportPage() {
       {/* 🎯 Challenge + 🏆 Rewards */}
       <div className="challenge-reward-card">
         <h2>🎯 Challenge Activity</h2>
-        <p>
-          You have {summary.challengeAttempted ? "✅ attempted" : "❌ not attempted"} this week’s challenge.
-        </p>
+        <p>You have {summary.challengeAttempted ? "✅ attempted" : "❌ not attempted"} this week’s challenge.</p>
 
         <h2>🏆 Rewards Earned</h2>
-        <p>
-          You’ve earned <strong>{summary.rewards || 0}</strong> reward{summary.rewards === 1 ? "" : "s"} till now.
-        </p>
+        <p>You’ve earned <strong>{summary.rewards || 0}</strong> reward{summary.rewards === 1 ? "" : "s"} till now.</p>
       </div>
 
       {/* 📊 Daily Logs */}
       <div className="log-section">
         <h2>📊 Daily Logs</h2>
-        {summary.last7.length > 0 ? (
+        {summary.last7?.length > 0 ? (
           <ul>
             {summary.last7.map((log: any, i: number) => (
               <li key={i}>

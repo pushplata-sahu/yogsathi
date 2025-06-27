@@ -1,33 +1,52 @@
 "use client";
+
 import Link from "next/link";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import "../../styles/settings.css";
 
 export default function YogSathiDashboard() {
   const router = useRouter();
+  const [isChecking, setIsChecking] = useState(true); // ✅ Loading check
 
   useEffect(() => {
-    const sidebar = document.querySelector(".dashboard-sidebar");
-    const handleClickOutside = (e: any) => {
-      if (
-        sidebar &&
-        sidebar.classList.contains("open") &&
-        !sidebar.contains(e.target) &&
-        !e.target.classList.contains("hamburger")
-      ) {
-        sidebar.classList.remove("open");
-      }
-    };
+    const token = localStorage.getItem("token");
 
-    document.addEventListener("click", handleClickOutside);
-    return () => document.removeEventListener("click", handleClickOutside);
+    if (!token) {
+      router.push("/login");
+    } else {
+      setIsChecking(false);
+    }
   }, []);
+
+  useEffect(() => {
+    if (!isChecking) {
+      // Sidebar outside click logic (after check)
+      const sidebar = document.querySelector(".dashboard-sidebar");
+      const handleClickOutside = (e: any) => {
+        if (
+          sidebar &&
+          sidebar.classList.contains("open") &&
+          !sidebar.contains(e.target) &&
+          !e.target.classList.contains("hamburger")
+        ) {
+          sidebar.classList.remove("open");
+        }
+      };
+
+      document.addEventListener("click", handleClickOutside);
+      return () => document.removeEventListener("click", handleClickOutside);
+    }
+  }, [isChecking]);
 
   const toggleSidebar = () => {
     const sidebar = document.querySelector(".dashboard-sidebar");
     sidebar?.classList.toggle("open");
   };
+
+  if (isChecking) {
+    return <div className="loading-screen">🔐 Checking login status...</div>; // ⏳ Optional loader
+  }
 
   return (
     <div className="dashboard-layout">
