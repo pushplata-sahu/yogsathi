@@ -1,11 +1,22 @@
 "use client";
 
 import Image from "next/image";
-import { useRouter } from "next/navigation"; // ✅ Add this line
+import { useRouter } from "next/navigation";
 import "../styles/welcome.css";
 
 export default function HeroSection() {
-  const router = useRouter(); // ✅ Add this line
+  const router = useRouter();
+
+  // ✅ Scroll function for feedback carousel
+  const scrollCarousel = (direction: number) => {
+    const container = document.getElementById("carousel");
+    if (container) {
+      container.scrollBy({
+        left: direction * 300,
+        behavior: "smooth",
+      });
+    }
+  };
 
   return (
     <div className="hero-about-wrapper">
@@ -34,11 +45,7 @@ export default function HeroSection() {
               <div className="feature-btn">📈 Progress & Motivation</div>
             </div>
 
-            {/* ✅ Updated button with routing */}
-            <button
-              className="cta-btn"
-              onClick={() => router.push("/onboarding")}
-            >
+            <button className="cta-btn" onClick={() => router.push("/onboarding")}>
               Let’s Get Started
             </button>
           </div>
@@ -49,7 +56,6 @@ export default function HeroSection() {
       <div className="about-section">
         <h2 className="section-title">About YogSathi</h2>
 
-        {/* YogSathi Aim Block */}
         <div
           className="about-aim"
           style={{
@@ -107,71 +113,76 @@ export default function HeroSection() {
         </div>
       </div>
 
-   
+      {/* Feedback / Blogs Section */}
+      <div className="feedback-section">
+        <h2 className="section-title">Blogs</h2>
 
+        <div className="why-yoga-paragraph">
+          <p>
+            Yoga is important because it connects the body, mind, and breath. It
+            helps reduce stress, improves flexibility, and enhances overall mental
+            clarity. In today’s fast-paced world, yoga offers a way to slow down
+            and reconnect with yourself. Practicing it regularly promotes
+            emotional balance, physical health, and inner peace. It’s not just an
+            activity — it’s a lifelong companion for holistic well-being.
+          </p>
+        </div>
 
+        <div className="carousel-wrapper">
+          <button className="carousel-btn left" onClick={() => scrollCarousel(-1)}>←</button>
 
-      {/* Feedback Section */}
-{/* Feedback Section / Blog Section */}
-<div className="feedback-section">
-  <h2 className="section-title">Blogs</h2>
+          <div className="feedback-cards-container" id="carousel">
+            <div className="feedback-card">
+              <img src="/feedback1.png" alt="Feedback 1" className="feedback-img" />
+              <p>
+                “Before YogSathi, my mornings were rushed and chaotic. Now, I begin
+                each day grounded and peaceful. It feels like I finally found space
+                to breathe again.”
+              </p>
+              <span>- Anjali and Group</span>
+            </div>
 
-  <div className="why-yoga-paragraph">
-    <p>
-      Yoga is important because it connects the body, mind, and breath. It
-      helps reduce stress, improves flexibility, and enhances overall mental
-      clarity. In today’s fast-paced world, yoga offers a way to slow down
-      and reconnect with yourself. Practicing it regularly promotes
-      emotional balance, physical health, and inner peace. It’s not just an
-      activity — it’s a lifelong companion for holistic well-being.
-    </p>
-  </div>
+            <div className="feedback-card">
+              <img src="/feedback2.png" alt="Feedback 2" className="feedback-img" />
+              <p>
+                “I used to wake up anxious and scattered. YogSathi helped me center
+                myself every morning. Now I move through the day with calm and
+                clarity.”
+              </p>
+              <span>- Priya</span>
+            </div>
 
-  <div className="carousel-wrapper">
-    <button className="carousel-btn left" onClick={() => scrollCarousel(-1)}>←</button>
+            <div className="feedback-card">
+              <img src="/feedback3.png" alt="Feedback 3" className="feedback-img" />
+              <p>
+                I felt disconnected from myself. YogSathi brought me back on the
+                mat. Now, I feel every breath, every move.
+              </p>
+              <span>- Ravi</span>
+            </div>
 
-    <div className="feedback-cards-container" id="carousel">
-      <div className="feedback-card">
-        <img src="/feedback1.png" alt="Feedback 1" className="feedback-img" />
-        <p>
-          “Before YogSathi, my mornings were rushed and chaotic. Now, I begin each day grounded and peaceful. It feels like I finally found space to breathe again.”
-        </p>
-        <span>- Anjali and Group</span>
+            <div className="feedback-card">
+              <img src="/feedback4.png" alt="Feedback 4" className="feedback-img" />
+              <p>
+                Woke up tired, carried stress all day. Now, YogSathi sets the tone
+                every morning. Fresh start, calm mind, grateful heart.
+              </p>
+              <span>- Akash</span>
+            </div>
+
+            <div className="feedback-card">
+              <img src="/feedback5.png" alt="Feedback 5" className="feedback-img" />
+              <p>
+                I never thought 10 minutes of yoga could change my day. With
+                YogSathi, I feel light, calm, and recharged — every single morning.
+              </p>
+              <span>- Meera</span>
+            </div>
+          </div>
+
+          <button className="carousel-btn right" onClick={() => scrollCarousel(1)}>→</button>
+        </div>
       </div>
-      <div className="feedback-card">
-        <img src="/feedback2.png" alt="Feedback 2" className="feedback-img" />
-        <p>
-          “I used to wake up anxious and scattered. YogSathi helped me center myself every morning. Now I move through the day with calm and clarity.”
-        </p>
-        <span>- Priya</span>
-      </div>
-      <div className="feedback-card">
-        <img src="/feedback3.png" alt="Feedback 3" className="feedback-img" />
-        <p>
-          I felt disconnected from myself. YogSathi brought me back on the mat. Now, I feel every breath, every move.
-        </p>
-        <span>- Ravi</span>
-      </div>
-      <div className="feedback-card">
-        <img src="/feedback4.png" alt="Feedback 4" className="feedback-img" />
-        <p>
-          Woke up tired, carried stress all day. Now, YogSathi sets the tone every morning. Fresh start, calm mind, grateful heart.
-        </p>
-        <span>- Akash</span>
-      </div>
-      <div className="feedback-card">
-        <img src="/feedback5.png" alt="Feedback 5" className="feedback-img" />
-        <p>
-          I never thought 10 minutes of yoga could change my day. With YogSathi, I feel light, calm, and recharged — every single morning.
-        </p>
-        <span>- Meera</span>
-      </div>
-    </div>
-
-    <button className="carousel-btn right" onClick={() => scrollCarousel(1)}>→</button>
-  </div>
-</div>
-
     </div>
   );
 }
